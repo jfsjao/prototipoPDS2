@@ -7,11 +7,9 @@ from database import engine
 model.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-
 @app.get("/")
 def read_root():
-    return {"Hello": "lala"}
-
+ return {"Hello": "lalalalalalalalala"}
 
 @app.post("/criar")
 def criar_valores(nova_mensagem: classes.Mensagem):
@@ -25,7 +23,3 @@ def criar_valores(nova_mensagem: classes.Mensagem):
 @app.get("/quadrado/{num}")
 def square(num: int):
     return num ** 2
-
-@app.get("/")
-def read_root():
-    return {"Hello": "lalalalalalalalala"}
