@@ -25,3 +25,7 @@ def criar_valores(nova_mensagem: classes.Mensagem):
 @app.get("/quadrado/{num}")
 def square(num: int):
     return num ** 2
+
+@app.get("/")
+def read_root():
+    return {"Hello": "lalalalalalalalala"}
