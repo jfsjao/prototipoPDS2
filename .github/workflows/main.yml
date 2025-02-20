@@ -1,4 +1,5 @@
 name: Build and Deploy
+
 on:
   - push
   - pull_request
@@ -33,12 +34,12 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Esperando o PostgreSQL ficar pronto
-        run: sleep 15
+        run: sleep 30
 
-      - name: Instalar httpx (caso não esteja no requirements.txt)
-        run: pip install httpx
+      - name: Testar conexão com PostgreSQL
+        run: pg_isready -h 127.0.0.1 -p 5432 -U postgres
 
       - name: Executar pytest
         env:
-          DATABASE_URL: postgresql://postgres:admin@localhost:5432/nome_database
+          DATABASE_URL: postgresql://postgres:admin@127.0.0.1:5432/nome_database
         run: pytest teste.py
