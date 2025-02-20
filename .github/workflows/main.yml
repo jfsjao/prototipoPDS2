@@ -34,18 +34,19 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Esperar o PostgreSQL ficar pronto
-        run: sleep 15
+        run: sleep 30
 
       - name: Testar conexão com PostgreSQL
         run: |
           for i in {1..5}; do
-            pg_isready -h postgree -p 5432 -U postgres && break
+            pg_isready -h postgres_server -p 5432 -U postgres && break
             echo "Aguardando PostgreSQL..."
             sleep 5
           done
 
 
+
       - name: Executar pytest
         env:
-          DATABASE_URL: postgresql://postgres:12345@postgree:5432/nome_database
+          DATABASE_URL: postgresql://postgres:12345@postgres_server:5432/postgres
         run: pytest teste.py
