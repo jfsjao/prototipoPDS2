@@ -6,7 +6,7 @@ client = TestClient(app)
 def teste_hello():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"Hello": "lala"}
+    assert response.json() == {"Hello": "lalalalalalalalala"}
 
 def teste_quadrado():
     num = 4

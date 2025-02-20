@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 user = "postgres"
 password = "12345"
 database = "nome_database"
-host = "localhost"
+host = "postgres"  # Ou 'pds2' se for o nome do container no Docker
 
 SQLALCHEMY_DATABASE_URL = f"postgresql+psycopg2://{user}:{password}@{host}/{database}"
 
