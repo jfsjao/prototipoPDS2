@@ -1,10 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-user = "postgres"
+user = "postgree"
 password = "12345"
 database = "nome_database"
-host = "postgres"  # Ou 'pds2' se for o nome do container no Docker
+host = "postgree" 
 
 SQLALCHEMY_DATABASE_URL = f"postgresql+psycopg2://{user}:{password}@{host}/{database}"
 

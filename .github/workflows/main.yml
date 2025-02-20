@@ -12,7 +12,7 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: postgres
+          POSTGRES_USER: postgree
           POSTGRES_PASSWORD: 12345
           POSTGRES_DB: nome_database
         ports:
@@ -39,12 +39,13 @@ jobs:
       - name: Testar conexão com PostgreSQL
         run: |
           for i in {1..5}; do
-            pg_isready -h postgres -p 5432 -U postgres && break
+            pg_isready -h postgree -p 5432 -U postgres && break
             echo "Aguardando PostgreSQL..."
             sleep 5
           done
 
+
       - name: Executar pytest
         env:
-          DATABASE_URL: postgresql://postgres:12345@postgres:5432/nome_database
+          DATABASE_URL: postgresql://postgres:12345@postgree:5432/nome_database
         run: pytest teste.py
