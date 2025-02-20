@@ -35,6 +35,9 @@ jobs:
       - name: Esperando o PostgreSQL ficar pronto
         run: sleep 15
 
+      - name: Instalar httpx (caso não esteja no requirements.txt)
+        run: pip install httpx
+
       - name: Executar pytest
         env:
           DATABASE_URL: postgresql://postgres:admin@localhost:5432/nome_database
